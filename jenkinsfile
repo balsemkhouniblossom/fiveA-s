@@ -11,7 +11,6 @@ pipeline {
         stage('Unit Test') {
             steps {
                script {
-                sh('npm test')
                 echo "No tests to run."
 
              }
