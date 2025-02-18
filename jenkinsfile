@@ -23,9 +23,9 @@ pipeline {
             steps {
                 dir('server') { // Exécution de SonarQube dans le dossier 'server'
                     script {
-                        def scannerHome = tool 'scanner' // ✅ Correction : placé dans un bloc `script`
-                        withSonarQubeEnv('SonarQube') { // ✅ Correction : ajout du nom de l'instance SonarQube
-                            sh "${scannerHome}/bin/sonar-scanner"
+                       def scannerHome = tool 'scanner'
+                       withSonarQubeEnv {
+                        sh "${scannerHome}/bin/sonar-scanner"
                         }
                     }
                 }
