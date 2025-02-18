@@ -1,26 +1,45 @@
 pipeline {
     agent any
     stages {
-        stage('Install dependencies') {
+        stage('Checkout') {
             steps {
                 script {
-                   sh('npm install')
+                    checkout([
+                        $class: 'GitSCM',
+                        branches: [[name: '*/user']],  // Spécifier la branche user
+                        doGenerateSubmoduleConfigurations: false,
+                        extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'server']],  // Cloner dans server/
+                        submoduleCfg: [],
+                        userRemoteConfigs: [[
+                            url: 'https://github.com/balsemkhouniblossom/fiveA-s.git'
+                        ]]
+                    ])
                 }
             }
         }
+
+        stage('Install dependencies') {
+            steps {
+                script {
+                   sh('cd server && npm install')  // Aller dans server avant d'installer
+                }
+            }
+        }
+
         stage('Unit Test') {
             steps {
                script {
-               
-                echo "No tests to run."
-
-             }
+                echo "Exécution des tests..."
+                sh('cd server && npm test')  // Aller dans server avant d'exécuter les tests
+               }
             }
         }
+
         stage('Build application') {
             steps {
                 script {
-                   echo "No tests to run." 
+                  sh('cd server && npm run build-dev')  // Aller dans server avant de builder
+                  echo "Build réussi."
                 }
             }
         }
