@@ -19,13 +19,15 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') { /
+        stage('SonarQube Analysis') { 
             steps {
                 dir('server') { // Exécution de SonarQube dans le dossier 'server'
                     
-                        withSonarQubeEnv('SonarQube') { // Nom de l’instance SonarQube dans Jenkins
-                            sh "${SONARQUBE_SCANNER_HOME}/bin/sonar-scanner"
+                       def scannerHome = tool 'scanner'
+                           withSonarQubeEnv {
+                             sh "${scannerHome}/bin/sonar-scanner"
                         }
+
                     
                 }
             }
