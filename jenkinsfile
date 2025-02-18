@@ -1,45 +1,29 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('Install Dependencies') {
             steps {
-                script {
-                    checkout([
-                        $class: 'GitSCM',
-                        branches: [[name: '*/user']],  // Spécifier la branche user
-                        doGenerateSubmoduleConfigurations: false,
-                        extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'server']],  // Cloner dans server/
-                        submoduleCfg: [],
-                        userRemoteConfigs: [[
-                            url: 'https://github.com/balsemkhouniblossom/fiveA-s.git'
-                        ]]
-                    ])
+                // Navigate to the backend folder before installing dependencies
+                dir('server') {
+                    sh 'npm install'
                 }
             }
         }
 
-        stage('Install dependencies') {
+        stage('Run Unit Tests') {
             steps {
-                script {
-                   sh('cd server && npm install')  // Aller dans server avant d'installer
+                // Navigate to the backend folder before running tests
+                dir('server') {
+                    sh 'npm test'
                 }
             }
         }
 
-        stage('Unit Test') {
+        stage('Build Application') {
             steps {
-               script {
-                echo "Exécution des tests..."
-                sh('cd server && npm test')  // Aller dans server avant d'exécuter les tests
-               }
-            }
-        }
-
-        stage('Build application') {
-            steps {
-                script {
-                  sh('cd server && npm run build-dev')  // Aller dans server avant de builder
-                  echo "Build réussi."
+                // Navigate to the backend folder before building the application
+                dir('server') {
+                    sh 'npm run build'
                 }
             }
         }
