@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "test": "cross-env NODE_ENV='test' mocha --timeout 20000 --exit",
-    "build-dev": "webpack --config webpack.dev.js --mode development"
+    "build-dev": "webpack --config webpack.dev.js --mode development",
     "lint": "eslint .",
     "preview": "vite preview"
   },
