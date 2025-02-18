@@ -1,6 +1,6 @@
 FROM node:16-alpine
 WORKDIR /app
-COPY . /index
+COPY . /app
 RUN npm install
 EXPOSE 5000
-CMD  ["npm", "start"]
+CMD ["npm", "start"]
