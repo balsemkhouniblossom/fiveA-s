@@ -10,9 +10,9 @@ pipeline {
         }
         stage('Unit Test') {
             steps {
-                // Add your unit test commands here, for example:
-                // sh('npm test')
-                echo "Unit tests are not defined yet."
+               script {
+                sh('npm test')
+                  }
             }
         }
         stage('Build application') {
