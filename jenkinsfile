@@ -47,10 +47,11 @@ pipeline {
              // Building Docker images
     stage('Building images (node and mongo)') {
       steps{
-        
+        dir('server') {
         script {
          sh('docker-compose build')
         }
+    }
       }
     }
     }
