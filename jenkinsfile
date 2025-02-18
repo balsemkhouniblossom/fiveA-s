@@ -44,12 +44,12 @@ pipeline {
             }
         }
 
-          stage('Building images (node and mongo)') {
-            steps{
-            script {
-                sh('docker-compose build')
+           stage('Building images (node and mongo)') {
+            steps {
+                script {
+                    sh 'sudo docker-compose build'
                 }
-                 }
-         }
+            }
+        }
     }
 }
