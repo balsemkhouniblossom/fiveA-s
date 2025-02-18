@@ -12,7 +12,9 @@ pipeline {
             steps {
                script {
                 sh('npm test')
-                  }
+                echo "No tests to run."
+
+             }
             }
         }
         stage('Build application') {
