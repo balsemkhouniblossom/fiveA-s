@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Running tests...\"",
-    "build": "webpack --config webpack.config.js",
+    "build": "echo \"Running build...\"",
     "start": "nodemon index.js"
   },
   "author": "",
