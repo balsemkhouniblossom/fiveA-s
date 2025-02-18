@@ -13,8 +13,9 @@ services:
     volumes:
       - ./data/dump:/dump
 
-  app:
-    build: .
+app:
+    build:
+      context: ./server
     image: 192.168.33.10:8083/nodemongoapp:6.0
     restart: always
     container_name: back
