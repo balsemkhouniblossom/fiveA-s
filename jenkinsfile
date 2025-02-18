@@ -1,22 +1,24 @@
-pipeline{
-agent any
-stages {
-stage('Install dependencies') {
-steps{
-script {
-sh('npm install')
-}
-}
-}
-stage('Unit Test') {
-steps{
-}
-stage('Build application') {
-steps{
-script {
-sh('npm run build-dev')
-}
-}
-}
-}
+pipeline {
+    agent any
+    stages {
+        stage('Install dependencies') {
+            steps {
+                script {
+                    sh('npm install')
+                }
+            }
+        }
+        stage('Unit Test') {
+            steps {
+                // Add your unit test commands here
+            }
+        }
+        stage('Build application') {
+            steps {
+                script {
+                    sh('npm run build-dev')
+                }
+            }
+        }
+    }
 }
