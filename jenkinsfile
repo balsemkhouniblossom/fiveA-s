@@ -11,6 +11,8 @@ pipeline {
         stage('Unit Test') {
             steps {
                 // Add your unit test commands here
+                // Example:
+                // sh('npm test')
             }
         }
         stage('Build application') {
