@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./login.css"; // Make sure to create and import the corresponding CSS file
+import "./login.css"; // Assurez-vous que le fichier CSS est bien importé
 import { FaUser, FaLock } from "react-icons/fa";
 
-const Signin  = () => {
+const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -41,44 +41,46 @@ const Signin  = () => {
   };
 
   return (
-    <div className="wrapper">
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="input-box">
-          <input 
-            type="email" 
-            placeholder="Email address" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required
-          />
-          <FaUser className="icon" />
-        </div>
-        <div className="input-box">
-          <input 
-            type="password" 
-            placeholder="Password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            required
-          />
-          <FaLock className="icon" />
-        </div>
-        <div className="remember-forgot">
-          <label>
-            <input type="checkbox" /> Remember me
-          </label>
-          <Link to="/forgot-password">Forgot password?</Link>
-        </div>
-        <button type="submit">Login</button>
-        <div className="register-link">
-          <p>
-            Don't have an account? <Link to="/register">Register</Link>
-          </p>
-        </div>
-      </form>
+    <div className="login-page">
+      <div className="wrapper">
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="input-box">
+            <input 
+              type="email" 
+              placeholder="Email address" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required
+            />
+            <FaUser className="icon" />
+          </div>
+          <div className="input-box">
+            <input 
+              type="password" 
+              placeholder="Password" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+              required
+            />
+            <FaLock className="icon" />
+          </div>
+          <div className="remember-forgot">
+            <label>
+              <input type="checkbox" /> Remember me
+            </label>
+            <Link to="/forgot-password">Forgot password?</Link>
+          </div>
+          <button type="submit">Login</button>
+          <div className="register-link">
+            <p>
+              Don't have an account? <Link to="/register">Register</Link>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Signin ;
+export default Signin;

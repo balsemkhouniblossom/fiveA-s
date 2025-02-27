@@ -32,6 +32,7 @@ function Forgetpass() {
     };
 
     return (
+        <div className="login-page">
         <div className="wrapper">
             <form onSubmit={handleSubmit} className="form-container">
                 <h1 className="form-title">Réinitialiser le mot de passe</h1>
@@ -50,6 +51,7 @@ function Forgetpass() {
                 </div>
                 <button type="submit" className="btn btn-primary">Envoyer</button>
             </form>
+        </div>
         </div>
     );
 }

@@ -43,6 +43,7 @@ const Register = () => {
   };
 
   return (
+    <div className="login-page">
     <div className="wrapper">
       <form onSubmit={handleSubmit}>
         <h1>Créer un Compte</h1>
@@ -89,6 +90,7 @@ const Register = () => {
           <p>Déjà un compte ? <Link to="/login">Se connecter</Link></p>
         </div>
       </form>
+    </div>
     </div>
   );
 };

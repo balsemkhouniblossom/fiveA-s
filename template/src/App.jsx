@@ -13,7 +13,7 @@ import SmoothScroll from "smooth-scroll";
 import "./App.css";
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Signin from "./login/login";
-import Pation from "./patient/patient";
+import Pation from "./patient";
 import Register from "./login/register";
 import Dashboard from "./admin/dashboard";
 import ForgetPassword from "./login/forgetpass";
