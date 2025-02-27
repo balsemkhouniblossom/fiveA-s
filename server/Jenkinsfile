@@ -17,7 +17,7 @@ pipeline {
         stage('Unit Test') {
             steps {
                 script {
-                    sh 'cd server && npx jest'
+                    sh 'cd server && npm test'
                 }
             }
         }
