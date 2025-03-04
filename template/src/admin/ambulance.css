@@ -1,0 +1,363 @@
+.login-page {
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fff;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .login-page * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .login-page .code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  }
+  
+  .wrapper {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.2);
+    backdrop-filter: blur(30px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+  }
+  
+  .wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+  }
+  
+  .wrapper .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: #9fe9fc;
+    margin: 30px 0;
+    border-radius: 10px;
+  }
+  
+  .input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: 2px solid rgba(255,255,255,.2);
+    border-radius: 40px; 
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px;
+  }
+  
+  .input-box::placeholder {
+    color: #fff;
+  }
+  
+  .input-box .icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px; 
+  }
+  
+  .wrapper .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+  }
+  
+  .remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 4px;
+  }
+  
+  .remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .remember-forgot a:hover {
+    text-decoration: underline;
+  }
+  
+  .wrapper button {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 700;
+  }
+  
+  .wrapper .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+  }
+  
+  .register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .register-link p a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Icône de flèche vers le haut */
+  .input-box .icon.up-arrow {
+    content: "\f062"; 
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 900;
+  }
+  
+  /* Icône de flèche vers le bas */
+  .input-box .icon.down-arrow {
+    content: "\f063"; 
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+  }
+  
+  /* Style du box select pour le genre */
+  .input-box select {
+    width: 100%;
+    height: 50px;
+    background-color: #9fe9fc;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 15px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    appearance: none;
+    background-position: right 15px center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    font-size: 16px;
+  }
+  
+  .input-box select:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .input-box select:focus {
+    outline: none;
+    border-color: #fff;
+  }
+  
+  /* Code input boxes */
+  .code-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .code-box {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+  }
+  
+  .code-box:focus {
+    border-color: #0056b3;
+    background-color: #f8f9fa;
+  }
+  
+  /* Buttons */
+  .btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  .btn-secondary:disabled {
+    background-color: #b5b5b5;
+    cursor: not-allowed;
+  }
+  
+  /* Login button */
+  .login-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .login-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Divider for Google Login */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+    position: relative;
+  }
+  
+  .divider::before,
+  .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 10px;
+  }
+  
+  /* Google Login button */
+  .google-login {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .google-login button {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .google-login button:hover {
+    background-color: #f1f1f1;
+  }
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .ambulance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .ambulance-card {
+    background: white;
+    border-radius: 15px; /* Réduction du rayon des coins pour une carte plus petite */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre plus légère */
+    padding: 15px; /* Réduction du padding */
+    border: 1px solid #ddd;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    max-width: 250px; /* Réduction de la largeur maximale */
+  }
+  
+  .ambulance-card:hover {
+    transform: translateY(-3px); /* Légère élévation au survol */
+  }
+  
+  .ambulance-card h3 {
+    font-size: 16px; /* Réduction de la taille du texte */
+    font-weight: bold;
+    margin-bottom: 8px; /* Réduction de l'espace en dessous */
+  }
+  
+  .ambulance-info {
+    font-size: 12px; /* Réduction de la taille de la police */
+    color: #666;
+    margin: 4px 0; /* Réduction de l'espacement entre les éléments */
+  }
+  
+  .delete-button {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 8px; /* Réduction du padding */
+    font-size: 16px; /* Réduction de la taille de la police */
+    border-radius: 25%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* Réduction de l'espacement en haut */
+    margin-left: 80px; /* Réduction de l'espacement à gauche */
+  }
+  
+  .delete-button:hover {
+    background-color: #e60000;
+    transform: scale(1.05); /* Légère augmentation au survol */
+  }
+  
+  .ambulance-image img {
+    width: 80px; /* Réduction de la taille de l'image */
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  
+  .ambulance-info p {
+    margin: 5px 0;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .col-md-4 {
+    flex: 1 1 33%;
+    padding: 10px;
+  }
+  
