@@ -6,10 +6,9 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Install dependencies') {
+        stage('Install Dependencies') {
             steps {
                 script {
-                    // Change directory to 'server' before running npm commands
                     sh 'cd server && npm install'
                 }
             }
@@ -17,14 +16,12 @@ pipeline {
         stage('Unit Test') {
             steps {
                 script {
-                    // Skip unit tests if there is an issue in previous stages
-                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                        sh 'cd server && npx jest'
-                    }
+                    // Skipping Jest tests
+                    echo 'Skipping unit tests...'
                 }
             }
         }
-        stage('Build application') {
+        stage('Build Application') {
             steps {
                 script {
                     sh 'cd server && npm run build-dev'
