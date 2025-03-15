@@ -7,6 +7,7 @@ import { FilterNurse } from "./nursefilter";
 import { Patinetfilter } from "./patientfilter";
 import Ambulance from "./ambulance";
 import CreateAmbulance from "./createAmbulance";
+import Materiel from "./Materiel";
 export const Navigation = () => {
   const [selectedMenu, setSelectedMenu] = useState("dashboard");
   const [ambulanceView, setAmbulanceView] = useState("list");
@@ -58,8 +59,8 @@ export const Navigation = () => {
         return <Patinetfilter />;
       case "nurse":
         return <FilterNurse />;
-      case "material":
-        return <h1>Gestion du matériel</h1>;
+        case "material":
+          return <Materiel/>;
       case "operation":
         return <h1>Gestion des opération</h1>;
       case "room":

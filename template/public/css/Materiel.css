@@ -1,0 +1,105 @@
+.container {
+    max-width: 900px; /* Adjusted for a more compact fit */
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center; /* Center the title */
+}
+
+.material-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.material-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.submit-button {
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 15px;
+}
+
+.submit-button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.material-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between cards */
+    justify-content: center; /* Center align cards */
+}
+
+.small-material-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px; /* Increased padding for better fit */
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 200px; /* Adjusted width for better fit */
+    transition: transform 0.2s ease-in-out;
+}
+
+.small-material-card:hover {
+    transform: translateY(-5px);
+}
+
+.small-material-card h3 {
+    font-size: 16px; /* Slightly increased font size */
+    font-weight: bold;
+    margin-bottom: 5px; /* Reduced margin */
+}
+
+.material-info {
+    font-size: 14px; /* Increased font size for better visibility */
+    color: #666;
+    margin: 5px 0;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between; /* Ensure buttons are on opposite sides */
+    margin-top: 10px;
+}
+
+.card-actions button {
+    flex: 1; /* Allow buttons to occupy equal space */
+    margin: 0 5px; /* Add margin between buttons */
+}
+
+.delete-button {
+    background-color: #ff4d4d; 
+    border: none;
+    color: white;
+    padding: 5px;
+    font-size: 12px; /* Adjusted font size */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.delete-button:hover {
+    background-color: #e60000; 
+    transform: scale(1.1); 
+}
+
+.delete-button:active {
+    transform: scale(0.95); /* Shrink when clicked for feedback */
+}

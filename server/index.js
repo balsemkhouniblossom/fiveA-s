@@ -9,6 +9,8 @@ const nodemailer = require("nodemailer");
 const bcrypt = require("bcrypt");
 const { OAuth2Client } = require("google-auth-library"); // Ajoute cette ligne si elle manque
 const AmbulanceModel = require("./models/Ambulance");
+const MaterialModel = require("./models/Material"); // Adjust the path as necessary
+
 
 const app = express();
 app.use(express.json());
@@ -453,6 +455,76 @@ app.post("/verify-code",async(req,res)=>{
         
     }
 })
+
+app.post("/materials", async (req, res) => {
+    try {
+        const { name, quantity } = req.body;
+        const newMaterial = await MaterialModel.create({ name, quantity });
+        res.status(201).json({ message: "Material created successfully", material: newMaterial });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Get all materials
+app.get("/materials", async (req, res) => {
+    try {
+        const materials = await MaterialModel.find({});
+        if (!materials.length) {
+            return res.status(404).json({ message: "No materials found" });
+        }
+        res.status(200).json(materials);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Get a material by ID
+app.get("/materials/:id", async (req, res) => {
+    try {
+        const material = await MaterialModel.findById(req.params.id);
+        if (!material) {
+            return res.status(404).json({ message: "Material not found" });
+        }
+        res.json(material);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Update a material by ID
+app.put("/materials/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updateData = req.body;
+        const updatedMaterial = await MaterialModel.findByIdAndUpdate(id, updateData, { new: true });
+
+        if (!updatedMaterial) {
+            return res.status(404).json({ message: "Material not found" });
+        }
+
+        res.json(updatedMaterial);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Delete a material by ID
+app.delete("/materials/:id", async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedMaterial = await MaterialModel.findByIdAndDelete(id);
+
+        if (!deletedMaterial) {
+            return res.status(404).json({ message: "Material not found" });
+        }
+
+        res.status(200).json({ message: "Material deleted successfully", deletedMaterial });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+  
 
 
   
