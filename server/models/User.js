@@ -10,7 +10,11 @@ const UserSchema = new mongoose.Schema({
     phone: String,
     password: String,
     bloc: String,
-    specialty: String,
+    specialty:  {
+        type: String,
+        enum: ["chirurgie", "consultation", "radiologie", "urgente"]
+        
+    },
     medicalHistory: String,
     testResults: String,
     isVerifyed:{

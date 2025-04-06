@@ -34,9 +34,18 @@ export const Navigation = () => {
           <img src="img/logo.jpg" alt="Logo" className="logo" />
         </div>
         <ul className="nav-links">
-          <li><a href="#features" className="nav-item">Operations</a></li>
+        <li>
+            <a
+              className="nav-item"
+              href={`/operationDoctor/${userId}`}
+            >
+              Operations
+            </a>
+          </li>
           <li><a href="#about" className="nav-item">Appointment</a></li>
-          <li><a href="#services" className="nav-item">Schedule</a></li>
+          <li>
+            <a href={`/doctorCalendar/${userId}`} className="nav-item">Schedule</a>
+          </li>
           <li><a href="#portfolio"className="nav-item">List Patients</a></li>
           <li><a href="#testimonials" className="nav-item">Chatbot</a></li>
           <li>

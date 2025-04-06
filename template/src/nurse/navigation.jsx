@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa"; 
+import {Appointment} from "./appointment"
 
 export const Navigation = (props) => {
   const navigate = useNavigate();
@@ -40,6 +41,12 @@ export const Navigation = (props) => {
         console.error("User ID not found");
       }
     };
+
+    const handleAppointmentClick = (e) => {
+            navigate("/appointment");
+    };
+    
+    
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -82,7 +89,7 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
-              <a href="#about" className="page-scroll">
+              <a href="#Appointment" className="page-scroll"  onClick={handleAppointmentClick}>
                 Patients
               </a>
             </li>

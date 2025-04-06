@@ -10,6 +10,11 @@ const bcrypt = require("bcrypt");
 const { OAuth2Client } = require("google-auth-library"); // Ajoute cette ligne si elle manque
 const AmbulanceModel = require("./models/Ambulance");
 const MaterialModel = require("./models/Material"); // Adjust the path as necessary
+const AppointmentModel = require('./models/Appointment');
+const Room = require('./models/Room');
+const RoomModel = require("./models/Room");
+
+const OperationModel = require('./models/Operation')
 
 
 const app = express();
@@ -42,6 +47,72 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+app.get("/appointments", async (req, res) => {
+    try {
+        const appointments = await AppointmentModel.find()
+            .populate("patient", "name lastName")
+            .populate("doctor", "name lastName");
+
+        res.json(appointments);
+    } catch (error) {
+        console.error("Erreur lors de la récupération des rendez-vous :", error);
+        res.status(500).json({ message: "Erreur serveur" });
+    }
+});
+
+// Route pour ajouter un rendez-vous
+app.post("/appointments", async (req, res) => {
+    try {
+      const { startTime, endTime, status, patient, doctor } = req.body;
+  
+      if (!startTime || !endTime || !status || !patient || !doctor) {
+        return res.status(400).json({ message: "Tous les champs requis ne sont pas fournis" });
+      }
+  
+      const newAppointment = new AppointmentModel({
+        startTime,
+        endTime,
+        status,
+        patient,
+        doctor
+      });
+  
+      await newAppointment.save();
+      res.status(201).json({ message: "Rendez-vous ajouté avec succès", appointment: newAppointment });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Erreur serveur", error: error.message });
+    }
+  });
+
+  app.get("/appointments/doctor/:doctorId", async (req, res) => {
+    try {
+      const { doctorId } = req.params;
+      const appointments = await AppointmentModel.find({ doctor: doctorId })
+        .populate("patient", "name lastName")
+        .populate("doctor", "name lastName");
+  
+      res.json(appointments);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des rendez-vous :", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
+  app.get("/appointments/patient/:patientId", async (req, res) => {
+    try {
+      const { patientId } = req.params;
+      const appointments = await AppointmentModel.find({ patient: patientId })
+        .populate("patient", "name lastName")
+        .populate("doctor", "name lastName");
+  
+      res.json(appointments);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des rendez-vous :", error);
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+  
 
 app.get('/users/:id', async (req, res) => {
     try {
@@ -348,6 +419,7 @@ app.get('/api/patients',async(req,res)=>{
         
     }
 })
+
 app.delete("/users/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -524,11 +596,80 @@ app.delete("/materials/:id", async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+app.post('/api/operations', async (req, res) => {
+    try {
+      const { startTime, endTime, description, patient, doctor, room } = req.body;
+  
+      if (!startTime || !endTime || !patient || !doctor || !room) {
+        return res.status(400).json({ message: "Tous les champs sont requis" });
+      }
+  
+      const patientExists = await UserModel.findById(patient);
+      const doctorExists = await UserModel.findById(doctor);
+      const roomExists = await RoomModel.findById(room);
+  
+      if (!patientExists || !doctorExists || !roomExists) {
+        return res.status(400).json({ message: "Le patient, le médecin ou la salle n'existent pas" });
+      }
+  
+      const newOperation = new OperationModel({
+        startTime,
+        endTime,
+        description,
+        patient,
+        doctor,
+        room
+      });
+  
+      await newOperation.save();
+  
+      res.status(201).json({ message: "Opération ajoutée avec succès", operation: newOperation });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Une erreur est survenue lors de l'ajout de l'opération" });
+    }
+  });
+  
+
+  
+  app.get('/doctor/:doctorId', async (req, res) => {
+    const { doctorId } = req.params;
+  
+    try {
+      const operations = await OperationModel.find({ doctor: doctorId })
+          
+  
+      res.json(operations);
+    } catch (err) {
+      res.status(500).json({ error: 'Erreur serveur lors de la récupération des opérations' });
+    }
+  });
+
+  app.get('/patient/:patientId', async (req, res) => {
+    const { patientId } = req.params;
+  
+    try {
+      const operations = await OperationModel.find({ patient: patientId })
+          
+  
+      res.json(operations);
+    } catch (err) {
+      res.status(500).json({ error: 'Erreur serveur lors de la récupération des opérations' });
+    }
+  });
   
 
 
   
+  app.get('/api/rooms', async (req, res) => {
+    try {
+      const rooms = await RoomModel.find(); 
+      res.status(200).json(rooms);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erreur lors de la récupération des salles' });
+    }
+  });
 
-
-// 🚀 Démarrage du serveur
 app.listen(3001, () => console.log("✅ Server is running on http://localhost:3001"));

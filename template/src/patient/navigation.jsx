@@ -81,15 +81,16 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
-              <a href="#about" className="page-scroll">
-                Appointment
-              </a>
-            </li>
-            <li>
-              <a href="#services" className="page-scroll">
-                List Appointments
-              </a>
-            </li>
+            <a href={`/patientCalendar/${userId}`} className="nav-item">Appointment</a>
+          </li>
+          <li>
+            <a
+              className="page-scroll"
+              href={`/operationPatient/${userId}`}
+            >
+              Operations
+            </a>
+          </li>
             <li>
               <a href="#portfolio" className="page-scroll">
                 Health History

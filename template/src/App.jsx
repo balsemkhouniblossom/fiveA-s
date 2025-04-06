@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigation } from "./patient/navigation";
-import { Header } from "./patient/header";
-import { Features } from "./patient/features";
-import { About } from "./patient/about";
-import { Services } from "./patient/services";
-import { Gallery } from "./patient/gallery";
-import { Testimonials } from "./patient/testimonials";
-import { Team } from "./patient/Team";
-import { Contact } from "./patient/contact";
+
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
 import { createContext } from "react";
@@ -24,10 +16,14 @@ import ShowProfile from "./login/showProfile";
 import Doctor from "./medecin/medecin";
 import Nurse from "./nurse/nurse";
 import ProtectedRoutes from "./login/protectedRouter";
+import DoctorCalendar from "./medecin/doctorCalendar";
 
 import ResetPass from "./login/resetpass";
-import Ambulance from "./admin/ambulance";
 import FactoryAuth from "./login/2FactorAuth";
+import Appointment from "./admin/appointment";
+import OperationCalendarMedecin from "./medecin/Operation";
+import OperationCalendarPatient from "./patient/Operation";
+import PatientCalendar from "./patient/patientCalendar copy";
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
   speedAsDuration: true,
@@ -52,7 +48,7 @@ const App = () => {
       value={{  otp, setOTP, setEmail, email }}
     >
       <Routes>
-
+      
       <Route path="/" element={<Signin></Signin>}></Route>
       <Route element={<ProtectedRoutes allowedRoles={["ADMIN"]} />}>
           <Route path="/dashboard" element={<Dashboard />} />
@@ -60,14 +56,17 @@ const App = () => {
 
         <Route element={<ProtectedRoutes allowedRoles={["PATIENT"]} />}>
           <Route path="/patient" element={<Pation />} />
+          <Route path="/patientCalendar/:patientId" element={<PatientCalendar />} />
         </Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["DOCTOR"]} />}>
           <Route path="/doctor" element={<Doctor/>} />
+          <Route path="/doctorCalendar/:doctorId" element={<DoctorCalendar />} />
         </Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["NURSE"]} />}>
           <Route path="/nurse" element={<Nurse />} />
+          <Route path="/appointment" element={<Appointment />} />
         </Route>
 
         <Route path="*" element={<h1>404 - Page non trouvée</h1>} />
@@ -75,8 +74,14 @@ const App = () => {
       <Route path="/updateProfile/:id" element={<UpdateProfile />} />
       <Route path="/showProfile/:id" element={<ShowProfile />} />
       <Route path="/codeAuth" element={<FactoryAuth></FactoryAuth>}></Route>
-
-
+      <Route 
+              path="/operationDoctor/:doctorId" 
+              element={<OperationCalendarMedecin />} 
+            />
+     <Route 
+              path="/operationPatient/:patientId" 
+              element={<OperationCalendarPatient />} 
+            />
 
      <Route path="/register" element={<Register></Register>}></Route>
      <Route path="/reset-password/:id/:token" element={<ResetPass></ResetPass>}></Route>

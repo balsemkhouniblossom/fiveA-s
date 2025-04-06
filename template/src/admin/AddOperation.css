@@ -1,0 +1,73 @@
+/* Variables CSS pour faciliter la gestion */
+:root {
+    --primary-color: #007bff;
+    --hover-color: #0056b3;
+    --background-color: #ffffff;
+    --border-color: #ccc;
+    --text-color: #333;
+    --border-radius: 5px;
+    --padding: 10px;
+    --font-size: 16px;
+  }
+  
+  .add-operation-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .add-operation-title {
+    color: var(--text-color);
+    margin-bottom: 20px;
+  }
+  
+  .add-operation-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .add-operation-form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  .add-operation-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .add-operation-input,
+  .add-operation-textarea,
+  .add-operation-select {
+    width: 100%;
+    padding: var(--padding);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size);
+  }
+  
+  .add-operation-textarea {
+    resize: vertical;
+    height: 80px;
+  }
+  
+  .add-operation-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: var(--font-size);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .add-operation-button:hover {
+    background-color: var(--hover-color);
+  }
+  
