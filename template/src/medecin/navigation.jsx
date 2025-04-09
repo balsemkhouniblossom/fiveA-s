@@ -1,72 +1,62 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+import "./Navigation.css";
 
-export const Navigation = (props) => {
+export const Navigation = () => {
+  const navigate = useNavigate();
+  const [userName, setUserName] = useState("Utilisateur");
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const storedUserName = localStorage.getItem("userName");
+    const storedUserId = localStorage.getItem("userId");
+    if (storedUserName) setUserName(storedUserName);
+    if (storedUserId) setUserId(storedUserId);
+  }, []);
+
+  const Logout = () => {
+    localStorage.removeItem("isLogedIn");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userId");
+    navigate("/");
+  };
+
+  const handleUserClick = (e) => {
+    e.preventDefault();
+    if (userId) navigate(`/showProfile/${userId}`);
+  };
+
   return (
-    <nav id="menu" className="navbar navbar-default navbar-fixed-top">
+    <nav className="navbar">
       <div className="container">
-        <div className="navbar-header">
-          <button
-            type="button"
-            className="navbar-toggle collapsed"
-            data-toggle="collapse"
-            data-target="#bs-example-navbar-collapse-1"
-          >
-            {" "}
-            <span className="sr-only">Toggle navigation</span>{" "}
-            <span className="icon-bar"></span>{" "}
-            <span className="icon-bar"></span>{" "}
-            <span className="icon-bar"></span>{" "}
-          </button>
-          <a href="#" className="navbar-brand">
-            <img
-              src="img/logo.jpg"
-              alt="Logo"
-              style={{
-                height: "50px",
-                display: "inline-block",
-                verticalAlign: "middle",
-              }}
-            />
-          </a>
+        <div className="navbar-brand">
+          <img src="img/logo.jpg" alt="Logo" className="logo" />
         </div>
-
-        <div
-          className="collapse navbar-collapse"
-          id="bs-example-navbar-collapse-1"
-        >
-          <ul className="nav navbar-nav navbar-right">
-            <li>
-              <a href="#features" className="page-scroll">
-                Operations
-              </a>
-            </li>
-            <li>
-              <a href="#about" className="page-scroll">
-              Appoinment
-              </a>
-            </li>
-            <li>
-              <a href="#services" className="page-scroll">
-                Schedule
-              </a>
-            </li>
-            <li>
-              <a href="#portfolio" className="page-scroll">
-                List Patients
-              </a>
-            </li>
-            <li>
-              <a href="#testimonials" className="page-scroll">
-                Chatbot
-              </a>
-            </li>
-            <li>
-              <a href="#" className="page-scroll">
-                log out
-              </a>
-            </li>
-          </ul>
-        </div>
+        <ul className="nav-links">
+        <li>
+            <a
+              className="nav-item"
+              href={`/operationDoctor/${userId}`}
+            >
+              Operations
+            </a>
+          </li>
+          <li><a href="#about" className="nav-item">Appointment</a></li>
+          <li>
+            <a href={`/doctorCalendar/${userId}`} className="nav-item">Schedule</a>
+          </li>
+          <li><a href="#portfolio"className="nav-item">List Patients</a></li>
+          <li><a href="#testimonials" className="nav-item">Chatbot</a></li>
+          <li>
+            <button className="logout-button" onClick={Logout}>Log out</button>
+          </li>
+          <li className="nav-user">
+            <a href="#" onClick={handleUserClick} className="nav-item">
+              <FaUserCircle size={40} className="user-icon" /> {userName}
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
   );

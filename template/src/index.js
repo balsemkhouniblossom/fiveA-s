@@ -1,19 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
-
+import { GoogleOAuthProvider } from "@react-oauth/google";
+const clientId = "300857414061-8ff3ed18qghlb7r1bcqom4a52ki58ch0.apps.googleusercontent.com";
 ReactDOM.render(
    
   <React.StrictMode>
+    <GoogleOAuthProvider clientId={clientId}>
+
     <BrowserRouter> 
     <App />
-    </BrowserRouter> 
+    </BrowserRouter>
+    </GoogleOAuthProvider>,
+ 
   </React.StrictMode>
   
   ,

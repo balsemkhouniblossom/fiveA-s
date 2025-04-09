@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Navigation } from "./patient/navigation";
-import { Header } from "./patient/header";
-import { Features } from "./patient/features";
-import { About } from "./patient/about";
-import { Services } from "./patient/services";
-import { Gallery } from "./patient/gallery";
-import { Testimonials } from "./patient/testimonials";
-import { Team } from "./patient/Team";
-import { Contact } from "./patient/contact";
+
 import JsonData from "./data/data.json";
 import SmoothScroll from "smooth-scroll";
+import { createContext } from "react";
+import CreateAmbulance from "./admin/createAmbulance";
 import "./App.css";
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Signin from "./login/login";
@@ -17,12 +11,28 @@ import Pation from "./patient/patient";
 import Register from "./login/register";
 import Dashboard from "./admin/dashboard";
 import ForgetPassword from "./login/forgetpass";
+import UpdateProfile from "./login/updateProfile";
+import ShowProfile from "./login/showProfile";
 import Doctor from "./medecin/medecin";
 import Nurse from "./nurse/nurse";
+import ProtectedRoutes from "./login/protectedRouter";
+import DoctorCalendar from "./medecin/doctorCalendar";
+
+import ResetPass from "./login/resetpass";
+import FactoryAuth from "./login/2FactorAuth";
+import Appointment from "./admin/appointment";
+import OperationCalendarMedecin from "./medecin/Operation";
+import OperationCalendarPatient from "./patient/Operation";
+import PatientCalendar from "./patient/patientCalendar copy";
+import RoomForm from "./room/room";
+import RoomList from "./room/roomList";
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
   speedAsDuration: true,
 });
+
+export const RecoveryContext = createContext();
+
 
 const App = () => {
   const [landingPageData, setLandingPageData] = useState({});
@@ -30,20 +40,61 @@ const App = () => {
     setLandingPageData(JsonData);
   }, []);
 
+  const [email, setEmail] = useState();
+  const [otp, setOTP] = useState();
+
   return (
    
       <>
+      <RecoveryContext.Provider
+      value={{  otp, setOTP, setEmail, email }}
+    >
       <Routes>
-        <Route path="/" element={<Signin></Signin>}></Route>
-        <Route path="/patient" element={<Pation></Pation>}></Route>
-        <Route path="/doctor" element={<Doctor/>}></Route>
-        <Route path="/nurse" element={<Nurse/>}></Route>
-        <Route path="/register" element={<Register></Register>}></Route>
-        <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
-        <Route path="/login" element={<Signin/>}></Route>
-        <Route path="/forgot-password" element={<ForgetPassword/>}></Route>
-      </Routes>
-      </>
+      
+      <Route path="/" element={<Signin></Signin>}></Route>
+      <Route element={<ProtectedRoutes allowedRoles={["ADMIN"]} />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+
+        <Route element={<ProtectedRoutes allowedRoles={["PATIENT"]} />}>
+          <Route path="/patient" element={<Pation />} />
+          <Route path="/patientCalendar/:patientId" element={<PatientCalendar />} />
+        </Route>
+
+        <Route element={<ProtectedRoutes allowedRoles={["DOCTOR"]} />}>
+          <Route path="/doctor" element={<Doctor/>} />
+          <Route path="/doctorCalendar/:doctorId" element={<DoctorCalendar />} />
+        </Route>
+
+        <Route element={<ProtectedRoutes allowedRoles={["NURSE"]} />}>
+          <Route path="/nurse" element={<Nurse />} />
+          <Route path="/appointment" element={<Appointment />} />
+        </Route>
+
+        <Route element={<ProtectedRoutes allowedRoles={["ADMIN"]} />}>
+        <Route path="/room" element={<RoomForm/>}></Route>
+        <Route path="/roomList" element={<RoomList/>}></Route>
+        </Route>
+
+        <Route path="*" element={<h1>404 - Page non trouvée</h1>} />
+      <Route path="/forgot-password" element={<ForgetPassword/>}></Route>
+      <Route path="/updateProfile/:id" element={<UpdateProfile />} />
+      <Route path="/showProfile/:id" element={<ShowProfile />} />
+      <Route path="/codeAuth" element={<FactoryAuth></FactoryAuth>}></Route>
+      <Route 
+              path="/operationDoctor/:doctorId" 
+              element={<OperationCalendarMedecin />} 
+            />
+     <Route 
+              path="/operationPatient/:patientId" 
+              element={<OperationCalendarPatient />} 
+            />
+
+     <Route path="/register" element={<Register></Register>}></Route>
+     <Route path="/reset-password/:id/:token" element={<ResetPass></ResetPass>}></Route>
+     </Routes>
+     </RecoveryContext.Provider>
+    </>
      
       
       

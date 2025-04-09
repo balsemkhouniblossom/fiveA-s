@@ -1,63 +1,59 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./login.css"; // Assurez-vous que ce fichier est bien importé
+import { Link, useNavigate } from "react-router-dom";
 
 function Forgetpass() {
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-    axios.defaults.withCredentials = true;
+  axios.defaults.withCredentials = true;
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setMessage("");
-        setError("");
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      setMessage("");
+      setError("");
 
-        try {
-            const res = await axios.post("http://localhost:3001/forgot-password", { email });
+      try {
+          const res = await axios.post("http://localhost:3001/forgot-password", { email });
 
-            if (res.data.Status === "Success") {
-                setMessage("Email de réinitialisation envoyé !");
-                setTimeout(() => navigate("/login"), 3000); // Redirige après 3 secondes
-            } else {
-                setError(res.data.Status || "Erreur inconnue");
-            }
-        } catch (err) {
-            setError("Une erreur s'est produite, veuillez réessayer.");
-            console.error(err);
-        }
-    };
+          if (res.data.Status === "Success") {
+              alert("Email de réinitialisation envoyé !");
+              setTimeout(() => navigate("/"), 3000); 
+          } else {
+              alert(res.data.Status || "Erreur inconnue");
+          }
+      } catch (err) {
+          setError("Une erreur s'est produite, veuillez réessayer.");
+          console.error(err);
+      }
+  };
 
-    return (
-        <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-            <div className="bg-white p-4 rounded w-50">
-                <h4 className="mb-4">Forgot Password</h4>
-                {message && <div className="alert alert-success">{message}</div>}
-                {error && <div className="alert alert-danger">{error}</div>}
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label htmlFor="email" className="form-label">
-                            <strong>Email</strong>
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="Enter Email"
-                            autoComplete="off"
-                            name="email"
-                            className="form-control form-control-lg"
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <button type="submit" className="btn btn-success w-100 btn-lg">
-                        Send
-                    </button>
-                </form>
-            </div>
-        </div>
-    );
+  return (
+      <div className="login-page">
+      <div className="wrapper">
+          <form onSubmit={handleSubmit} className="form-container">
+              <h1 className="form-title">Réinitialiser le mot de passe</h1>
+              {message && <div className="alert alert-success">{message}</div>}
+              {error && <div className="alert alert-danger">{error}</div>}
+              <div className="input-box">
+                  <input
+                      type="email"
+                      placeholder="Entrez votre email"
+                      autoComplete="off"
+                      name="email"
+                      className="form-control"
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                  />
+              </div>
+              <button type="submit" className="btn btn-primary">Envoyer</button>
+          </form>
+      </div>
+      </div>
+  );
 }
 
 export default Forgetpass;

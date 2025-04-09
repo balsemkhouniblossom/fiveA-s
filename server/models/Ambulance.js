@@ -5,12 +5,16 @@ const AmbulanceSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         auto: true
     },
+    model: String,
+    serie: String,
+    contact: String,
     location : String,
     status: {
         type: String,
-        enum: [StatusEnum.AVAILABLE, StatusEnum.BUSY]
-    }
-});
+        enum: ["BUSY", "AVAILABLE"],
+        default: "AVAILABLE"
+    },
+})
 
 const AmbulanceModel = mongoose.model("ambulances", AmbulanceSchema);
 module.exports = AmbulanceModel;

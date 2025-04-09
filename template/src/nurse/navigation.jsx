@@ -1,6 +1,52 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa"; 
+import {Appointment} from "./appointment"
 
 export const Navigation = (props) => {
+  const navigate = useNavigate();
+    const [userName, setUserName] = useState("Utilisateur");
+    const [userId, setUserId] = useState(null);
+  
+    useEffect(() => {
+      const storedUserName = localStorage.getItem("userName");
+      const storedUserId = localStorage.getItem("userId");
+      console.log("Stored User ID in localStorage:", storedUserId); // Debugging
+      if (storedUserName) {
+        setUserName(storedUserName);
+      }
+      if (storedUserId) {
+        setUserId(storedUserId);
+      } else {
+        console.error("User ID not found in localStorage");
+      }
+    }, []);
+  
+    const Logout = () => {
+      console.log("Déconnexion en cours...");
+      window.localStorage.removeItem("isLogedIn");
+      window.localStorage.removeItem("userName");
+      window.localStorage.removeItem("userId");
+  
+      console.log("isLogedIn supprimé:", localStorage.getItem("isLogedIn"));
+      navigate("/");
+    };
+  
+    const handleUserClick = (e) => {
+      e.preventDefault();
+      if (userId) {
+        console.log("User ID:", userId); // Log the user ID to the console
+        navigate(`/showProfile/${userId}`);
+      } else {
+        console.error("User ID not found");
+      }
+    };
+
+    const handleAppointmentClick = (e) => {
+            navigate("/appointment");
+    };
+    
+    
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -25,6 +71,8 @@ export const Navigation = (props) => {
                 height: "50px",
                 display: "inline-block",
                 verticalAlign: "middle",
+                marginLeft: "-70px", // Ajustement si nécessaire
+
               }}
             />
           </a>
@@ -41,7 +89,7 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
-              <a href="#about" className="page-scroll">
+              <a href="#Appointment" className="page-scroll"  onClick={handleAppointmentClick}>
                 Patients
               </a>
             </li>
@@ -56,9 +104,14 @@ export const Navigation = (props) => {
               </a>
             </li>
             <li>
-              <a href="#" className="page-scroll">
+            <a href="#" className="page-scroll" onClick={()=>Logout()}>
                 log out
               </a>
+            </li>
+            <li className="nav-user">
+                          <a href="#" onClick={handleUserClick}>
+                            <FaUserCircle size={20} style={{ marginRight: "5px" }} /> {userName}
+                          </a>
             </li>
           </ul>
         </div>

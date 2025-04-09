@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox, MDBRadio } from "mdb-react-ui-kit";
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./login.css";
+import { FaChevronDown } from "react-icons/fa";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
+    name: "",
     lastName: "",
     email: "",
     phone: "",
@@ -15,80 +16,132 @@ const Register = () => {
     confirmPassword: "",
   });
 
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+
+  const validateForm = () => {
+    let newErrors = {};
+
+    if (!/^[A-Za-zÀ-ÿ\s]{2,}$/.test(formData.name)) {
+      newErrors.name = "Le prénom doit contenir au moins 2 lettres.";
+    }
+    if (!/^[A-Za-zÀ-ÿ\s]{2,}$/.test(formData.lastName)) {
+      newErrors.lastName = "Le nom doit contenir au moins 2 lettres.";
+    }
+    if (!/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/.test(formData.email)) {
+      newErrors.email = "L'email n'est pas valide.";
+    }
+    if (!/^\d{10,}$/.test(formData.phone)) {
+      newErrors.phone = "Le téléphone doit contenir au moins 10 chiffres.";
+    }
+    if (!/^\d+$/.test(formData.age) || formData.age < 1 || formData.age > 120) {
+      newErrors.age = "L'âge doit être un nombre entre 1 et 120.";
+    }
+    if (!formData.gender) {
+      newErrors.gender = "Veuillez sélectionner un genre.";
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = "Les mots de passe ne correspondent pas.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setFormData({
-      ...formData,
-      [id]: value,
-    });
+    setFormData({ ...formData, [id]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { firstName, lastName, email, age, gender, phone, password } = formData;
-    axios.post('http://localhost:3001/register', {
-      firstName, lastName, email, age, gender, phone, password
-    })
-    .then((result) => {
-      console.log(result);
-      navigate('/login');
-    })
-    .catch(err => console.log(err));
+    if (!validateForm()) return;
+
+    const { name, lastName, email, age, gender, phone, password } = formData;
+    axios
+      .post("http://localhost:3001/register", {
+        name,
+        lastName,
+        email,
+        age,
+        gender,
+        phone,
+        password,
+        role: "PATIENT",
+      })
+      .then(() => navigate("/"))
+      .catch((err) => console.log(err.response?.data || err.message));
   };
 
   return (
-    <MDBContainer fluid className="p-3 my-5 h-custom">
-      <MDBRow>
-        {/* Image à gauche */}
-        <MDBCol col="10" md="6">
-          <img src={`${process.env.PUBLIC_URL}/images/loginhost.jpg`} className="img-fluid" alt="Sample image" />
-        </MDBCol>
+    <div className="login-page">
+      <div className="wrapper">
+        <form onSubmit={handleSubmit}>
+          <h1>Créer un Compte</h1>
 
-        {/* Formulaire à droite */}
-        <MDBCol col="4" md="6">
-          <h3 className="mb-4">Create an Account</h3>
+          <div className="input-box">
+            <input type="text" id="name" placeholder="Prénom" value={formData.name} onChange={handleChange} />
+            {errors.name && <p className="error">{errors.name}</p>}
+          </div>
 
-          <form onSubmit={handleSubmit}>
-            <MDBRow>
-              <MDBCol md="6">
-                <MDBInput wrapperClass="mb-4" label="First Name" id="firstName" type="text" size="lg" value={formData.firstName} onChange={handleChange} />
-              </MDBCol>
-              <MDBCol md="6">
-                <MDBInput wrapperClass="mb-4" label="Last Name" id="lastName" type="text" size="lg" value={formData.lastName} onChange={handleChange} />
-              </MDBCol>
-            </MDBRow>
+          <div className="input-box">
+            <input type="text" id="lastName" placeholder="Nom" value={formData.lastName} onChange={handleChange} />
+            {errors.lastName && <p className="error">{errors.lastName}</p>}
+          </div>
 
-            <MDBInput wrapperClass="mb-4" label="Email" id="email" type="email" size="lg" value={formData.email} onChange={handleChange} />
-            <MDBInput wrapperClass="mb-4" label="Phone Number" id="phone" type="tel" size="lg" value={formData.phone} onChange={handleChange} />
-            <MDBInput wrapperClass="mb-4" label="Age" id="age" type="number" size="lg" value={formData.age} onChange={handleChange} />
+          <div className="input-box">
+            <input type="email" id="email" placeholder="Email" value={formData.email} onChange={handleChange} />
+            {errors.email && <p className="error">{errors.email}</p>}
+          </div>
 
-            {/* Genre */}
-            <div className="mb-4">
-              <label className="mb-2 d-block">Gender:</label>
-              <MDBRadio name="gender" id="male" label="Male" inline onChange={() => setFormData({ ...formData, gender: "Male" })} />
-              <MDBRadio name="gender" id="female" label="Female" inline onChange={() => setFormData({ ...formData, gender: "Female" })} />
-              <MDBRadio name="gender" id="other" label="Other" inline onChange={() => setFormData({ ...formData, gender: "Other" })} />
+          <div className="input-box">
+            <input type="tel" id="phone" placeholder="Téléphone" value={formData.phone} onChange={handleChange} />
+            {errors.phone && <p className="error">{errors.phone}</p>}
+          </div>
+
+          <div className="input-box">
+            <input type="number" id="age" placeholder="Âge" value={formData.age} onChange={handleChange} />
+            {errors.age && <p className="error">{errors.age}</p>}
+          </div>
+
+          <div className="input-box">
+            <select id="gender" value={formData.gender} onChange={handleChange}>
+              <option value="">Genre</option>
+              <option value="Male">Homme</option>
+              <option value="Female">Femme</option>
+              <option value="Other">Autre</option>
+            </select>
+            <div className="icon">
+              <FaChevronDown />
             </div>
+            {errors.gender && <p className="error">{errors.gender}</p>}
+          </div>
 
-            <MDBInput wrapperClass="mb-4" label="Password" id="password" type="password" size="lg" value={formData.password} onChange={handleChange} />
-            <MDBInput wrapperClass="mb-4" label="Confirm Password" id="confirmPassword" type="password" size="lg" value={formData.confirmPassword} onChange={handleChange} />
+          <div className="input-box">
+            <input type="password" id="password" placeholder="Mot de passe" value={formData.password} onChange={handleChange} />
+            {errors.password && <p className="error">{errors.password}</p>}
+          </div>
 
-            <div className="d-flex justify-content-between mb-4">
-              <MDBCheckbox name="terms" value="" id="terms" label="I agree to the terms and conditions" />
-            </div>
+          <div className="input-box">
+            <input type="password" id="confirmPassword" placeholder="Confirmer le mot de passe" value={formData.confirmPassword} onChange={handleChange} />
+            {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+          </div>
 
-            <div className="text-center text-md-start mt-4 pt-2">
-              <MDBBtn className="mb-0 px-5" size="lg" type="submit">Register</MDBBtn>
-              <p className="small fw-bold mt-2 pt-1 mb-2">
-                Already have an account? <Link to="/" className="link-danger">Sign in</Link>
-              </p>
-            </div>
-          </form>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+          <div className="remember-forgot">
+            <label>
+              <input type="checkbox" required /> J'accepte les termes et conditions
+            </label>
+          </div>
+
+          <button type="submit">S'inscrire</button>
+
+          <div className="register-link">
+            <p>Déjà un compte ? <Link to="/login">Se connecter</Link></p>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 
