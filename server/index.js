@@ -13,7 +13,7 @@ const MaterialModel = require("./models/Material"); // Adjust the path as necess
 const AppointmentModel = require('./models/Appointment');
 const Room = require('./models/Room');
 const RoomModel = require("./models/Room");
-
+const ComplaintModel = require("./models/Complaint"); // Adjust the path as necessary
 const OperationModel = require('./models/Operation')
 
 
@@ -59,7 +59,26 @@ app.get("/appointments", async (req, res) => {
         res.status(500).json({ message: "Erreur serveur" });
     }
 });
+app.post("/api/complaints", async (req, res) => {
+    try {
+        const { description, patientId } = req.body;
 
+        if (!description || !patientId) {
+            return res.status(400).json({ message: "Description and patient ID are required." });
+        }
+
+        const newComplaint = new ComplaintModel({
+            description,
+            patient: patientId
+        });
+
+        await newComplaint.save();
+        res.status(201).json({ message: "Complaint submitted successfully", complaint: newComplaint });
+    } catch (error) {
+        console.error("Error submitting complaint:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
 // Route pour ajouter un rendez-vous
 app.post("/appointments", async (req, res) => {
     try {
@@ -84,7 +103,42 @@ app.post("/appointments", async (req, res) => {
       res.status(500).json({ message: "Erreur serveur", error: error.message });
     }
   });
+  app.get("/api/complaints/:patientId", async (req, res) => {
+    try {
+        const { patientId } = req.params;
+        const complaints = await ComplaintModel.find({ patient: patientId });
 
+        res.json(complaints);
+    } catch (error) {
+        console.error("Error fetching complaints:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+app.put("/api/complaints/:id/status", async (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    if (!["Pending", "In Treatment", "Resolved"].includes(status)) {
+        return res.status(400).json({ message: "Invalid status" });
+    }
+
+    try {
+        const updatedComplaint = await ComplaintModel.findByIdAndUpdate(
+            id,
+            { status },
+            { new: true } // Return the updated document
+        );
+
+        if (!updatedComplaint) {
+            return res.status(404).json({ message: "Complaint not found" });
+        }
+
+        res.json(updatedComplaint);
+    } catch (error) {
+        console.error("Error updating complaint status:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
   app.get("/appointments/doctor/:doctorId", async (req, res) => {
     try {
       const { doctorId } = req.params;

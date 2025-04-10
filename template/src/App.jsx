@@ -17,6 +17,7 @@ import Doctor from "./medecin/medecin";
 import Nurse from "./nurse/nurse";
 import ProtectedRoutes from "./login/protectedRouter";
 import DoctorCalendar from "./medecin/doctorCalendar";
+import Complaint from "./patient/Complaint"; // Import Complaint component
 
 import ResetPass from "./login/resetpass";
 import FactoryAuth from "./login/2FactorAuth";
@@ -57,6 +58,8 @@ const App = () => {
         <Route element={<ProtectedRoutes allowedRoles={["PATIENT"]} />}>
           <Route path="/patient" element={<Pation />} />
           <Route path="/patientCalendar/:patientId" element={<PatientCalendar />} />
+          <Route path="/complaints/:userId" element={<Complaint />} /> {/* Add the Complaint route */}
+
         </Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["DOCTOR"]} />}>
