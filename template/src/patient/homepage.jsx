@@ -13,8 +13,15 @@ export const Homepage = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Récupération de l'id utilisateur connecté
+  const userId = localStorage.getItem('userId');
+
   const handleButtonClick = () => {
-    navigate('/options');
+    if (userId) {
+      navigate(`/options/${userId}`);
+    } else {
+      alert("Utilisateur non connecté");
+    }
   };
 
   const goToNext = () => {
@@ -49,8 +56,6 @@ export const Homepage = () => {
           </button>
         </div>
 
-
-        {/* Points indicateurs */}
         <div className="dots-container">
           {images.map((_, index) => (
             <span
@@ -59,7 +64,7 @@ export const Homepage = () => {
             ></span>
           ))}
         </div>
-        
+
         <h1 className="sub-slogan">
           Connecter les vies, sauver des instants précieux. 
           Découvrez nos services adaptés à vos besoins.

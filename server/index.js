@@ -420,6 +420,16 @@ app.get('/api/patients',async(req,res)=>{
     }
 })
 
+app.get('/api/medecin/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+      const medecin = await UserModel.findById(id);
+      res.json(medecin);
+    } catch (error) {
+      res.status(500).json({ message: "Erreur serveur" });
+    }
+  });
+
 app.delete("/users/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -480,6 +490,7 @@ app.post("/addroom", async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
 app.get("/ambulances", async (req, res) => {
     try {
         const ambulances = await Ambulance.find({}, "id model serie contact location status"); // Sélectionner seulement les champs nécessaires
@@ -782,4 +793,46 @@ app.put("/api/complaints/:id/status", async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+app.get('/appointments/medecin/:idMedecin', async (req, res) => {
+    const { idMedecin } = req.params;
+
+    try {
+        // Chercher uniquement les startTime des rendez-vous du médecin
+        const appointments = await AppointmentModel.find({ doctor: idMedecin }).select('startTime -_id');
+        // "-_id" = ne récupère pas le champ _id
+
+        if (!appointments.length) {
+            return res.status(404).json({ message: 'Aucun rendez-vous trouvé pour ce médecin' });
+        }
+
+        // Extraire uniquement les startTime
+        const startTimes = appointments.map(appointment => appointment.startTime);
+
+        // Envoyer le résultat
+        res.status(200).json({ startTimes });
+    } catch (error) {
+        console.error('Erreur lors de la récupération des rendez-vous:', error);
+        res.status(500).json({ message: 'Erreur serveur' });
+    }
+});
+app.get('/appointments/patient/:userId', async (req, res) => {
+    const { userId } = req.params;
+
+    try {
+        // Chercher tous les rendez-vous pour le patient (par userId)
+        const appointments = await AppointmentModel.find({ patient: userId });
+
+        if (!appointments.length) {
+            return res.status(404).json({ message: 'Aucun rendez-vous trouvé pour ce patient' });
+        }
+
+        // Envoyer les données complètes des rendez-vous
+        res.status(200).json({ appointments });
+    } catch (error) {
+        console.error('Erreur lors de la récupération des rendez-vous:', error);
+        res.status(500).json({ message: 'Erreur serveur' });
+    }
+});
+
+
 app.listen(3001, () => console.log("✅ Server is running on http://localhost:3001"));

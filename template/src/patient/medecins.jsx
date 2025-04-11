@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import "./../admin/user.css"
+import { useParams, useNavigate } from "react-router-dom"; // Importez useNavigate
+import "./../admin/user.css";
 
 export const Medecins = () => {
   const { specialite } = useParams();
   const [medecins, setMedecins] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Créez une instance de navigate
 
   useEffect(() => {
     const fetchMedecins = async () => {
@@ -29,6 +30,11 @@ export const Medecins = () => {
     fetchMedecins();
   }, [specialite]);
 
+  const handleReserve = (idMedecin) => {
+    // Redirige vers la page Rdv avec l'ID du médecin dans l'URL
+    navigate(`/rdv/${idMedecin}`);
+  };
+
   return (
     <div className="container">
       <h2>Liste des Médecins en {specialite}</h2>
@@ -46,9 +52,9 @@ export const Medecins = () => {
               <p className="user-info">Spécialité: {medecin.speciality}</p>
               <p className="user-info">Email: {medecin.email}</p>
 
-              {/* Bouton de suppression */}
-              <button className="delete-button">
-                <span className="material-icons">delete</span>
+              {/* Bouton de réservation */}
+              <button onClick={() => handleReserve(medecin._id)}>
+                <span>Reserve</span>
               </button>
             </div>
           ))

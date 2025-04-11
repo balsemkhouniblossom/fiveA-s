@@ -1,0 +1,21 @@
+/* Rdv.css */
+
+/* Classe pour les dates occupées */
+.occupied-date {
+    background-color: red !important;  /* Met le fond en rouge */
+    color: white !important;           /* Change le texte en blanc pour le rendre visible */
+    border-radius: 50%;                /* Arrondir les bords pour un meilleur effet */
+  }
+  
+  /* Si tu veux également personnaliser la sélection de la date */
+  .react-calendar__tile--active {
+    background-color: #4CAF50 !important; /* Exemple de couleur pour la date active */
+    color: white !important;
+  }
+  /* Couleur rouge pour les dates réservées */
+/* Applique un style aux dates réservées */
+.reserved-date {
+    background-color: red; /* Changez la couleur de fond selon vos préférences */
+    color: white; /* Changez la couleur du texte si nécessaire */
+  }
+  

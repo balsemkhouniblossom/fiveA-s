@@ -24,7 +24,9 @@ import ResetPass from "./login/resetpass";
 import FactoryAuth from "./login/2FactorAuth";
 import Appointment from "./admin/appointment";
 import OperationCalendarMedecin from "./medecin/Operation";
+import Rdv from "./patient/rdv"; 
 import OperationCalendarPatient from "./patient/Operation";
+import MesRdv from "./patient/MesRdv";
 import PatientCalendar from "./patient/patientCalendar";
 export const scroll = new SmoothScroll('a[href*="#"]', {
   speed: 1000,
@@ -53,6 +55,8 @@ const App = () => {
      
        
         <Route path="/medecins/:specialite" element={<Medecins />} />
+        <Route path="/rdv/:idMedecin" element={<Rdv />} />
+
     
 
       <Route path="/" element={<Signin></Signin>}></Route>
@@ -63,6 +67,8 @@ const App = () => {
         <Route element={<ProtectedRoutes allowedRoles={["PATIENT"]} />}>
           <Route path="/patient" element={<Pation />} />
           <Route path="/patientCalendar/:patientId" element={<PatientCalendar />} />
+          <Route path="/options/:userId" element={<MesRdv />} />
+
         </Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["DOCTOR"]} />}>
