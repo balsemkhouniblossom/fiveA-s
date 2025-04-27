@@ -1,0 +1,110 @@
+.patients-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .patients-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #2c3e50;
+  }
+  
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .patient-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+  }
+  
+  .patient-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .patient-card h3 {
+    color: #34495e;
+    margin-bottom: 10px;
+  }
+  
+  .patient-card p {
+    margin: 6px 0;
+    color: #555;
+  }
+  .patients-container {
+    padding: 20px;
+  }
+  
+  .patients-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .card-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    justify-content: center;
+  }
+  
+  .card-buttons button {
+    border: none;
+    border-radius: 6px;
+    padding: 6px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .card-buttons button:hover {
+    transform: scale(1.1);
+  }
+  
+  .pdf-btn {
+    background-color: #e74c3c; /* rouge */
+  }
+  
+  .pdf-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  .image-btn {
+    background-color: #3498db; /* bleu */
+  }
+  
+  .image-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .etat-btn {
+    background-color: #27ae60; /* vert */
+  }
+  
+  .etat-btn:hover {
+    background-color: #1e8449;
+  }
+  
+  .card-buttons svg {
+    width: 18px;
+    height: 18px;
+  }
+  

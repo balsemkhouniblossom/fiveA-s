@@ -1,0 +1,97 @@
+.navbar {
+  background: #ffffff;
+  border-radius: 90px;
+  padding: 15px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%; /* Limite la largeur de la navbar */
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%); /* Centre la navbar */
+  height: 120px; /* Définit une hauteur fixe */
+  max-height: 120px; /* Empêche l'agrandissement vertical */
+}
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 50px;
+  border-radius: 10px;
+}
+
+.brand-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #007bff;
+}
+
+.logout-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 90px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.logout-button:hover {
+  background-color: #0056b3;
+}
+
+.nav-user a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.user-icon {
+  color: #007bff;
+}
+.user-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+.nav-item {
+font-size: 20px;
+font-weight: bold;
+}
