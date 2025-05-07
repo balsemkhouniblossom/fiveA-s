@@ -68,4 +68,18 @@ Ambulance is dispatched to the patient’s location immediately.
 🧾 Billing and payment integration.
 
 🧪 Getting Started – Run LifeLink Locally
-git clone https://github.com/your-username/lifelink.git
+git clone https://github.com/balsemkhouniblossom/fiveA-s.git
+
+#Start the backend
+cd server 
+npm install 
+npm start
+
+#Start the frontend
+cd template
+npm install 
+npm start
+
+
+
+
