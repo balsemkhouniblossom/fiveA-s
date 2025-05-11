@@ -1,0 +1,7 @@
+torch
+torchvision
+medmnist
+flask
+numpy
+matplotlib
+

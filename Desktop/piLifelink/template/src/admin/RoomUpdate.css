@@ -1,0 +1,117 @@
+/* Overlay (fond noir semi-transparent) */
+.room-update-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+  }
+  
+  /* Conteneur du formulaire */
+  .room-update-container {
+    width: 400px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    animation: slideIn 0.4s ease;
+  }
+  
+  /* Animation d'entrée */
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Titre */
+  .room-update-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Formulaire */
+  .room-update-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Champs input et select */
+  .room-update-form input,
+  .room-update-form select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  
+  .room-update-form input:focus,
+  .room-update-form select:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+  }
+  
+  /* Labels */
+  .room-update-form label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 6px;
+    display: block;
+  }
+  
+  /* Boutons */
+  .room-update-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .room-update-buttons button {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: bold;
+  }
+  
+  .room-update-buttons button:first-child {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    margin-right: 10px;
+  }
+  
+  .room-update-buttons button:first-child:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+  }
+  
+  .room-update-buttons button:last-child {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+  }
+  
+  .room-update-buttons button:last-child:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+  }
+  

@@ -1,0 +1,96 @@
+/* Conteneur principal */
+.doctor-calendar-container {
+  font-family: 'Outfit', sans-serif;
+  padding: 40px 20px;
+  background: linear-gradient(to bottom right, #e1f5fe, #f9f9f9);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*background-image: url('../../public/images/j.jpg');*/
+  background-repeat: repeat;
+  background-size: 120px;
+  opacity: 0.98;
+}
+
+/* Titre */
+.calendar-title {
+  font-size: 32px;
+  color: #d32f2f;
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Bloc calendrier */
+.calendar-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  padding: 25px;
+}
+
+/* Calendrier */
+.rbc-calendar {
+  background: transparent;
+}
+
+/* Fond des cellules */
+.rbc-month-view,
+.rbc-time-view {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.rbc-day-bg {
+  border: 1px solid #e0e0e0;
+}
+
+/* Jours hors plage */
+.rbc-off-range-bg {
+  background-color: #f2f2f2;
+}
+
+/* Événements */
+.rbc-event {
+  background-color: #1976d2 !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+  font-size: 0.85rem;
+  padding: 5px 10px;
+  border-left: 4px solid #d32f2f !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Barre d’outils */
+.rbc-toolbar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.rbc-toolbar-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #003366;
+}
+
+.rbc-btn-group button {
+  background-color: #f8fafd;
+  color: #0077cc;
+  border: 1px solid #c4d8ee;
+  padding: 6px 12px;
+  margin: 0 5px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.rbc-btn-group button:hover {
+  background-color: #dbeeff;
+  transform: translateY(-1px);
+}

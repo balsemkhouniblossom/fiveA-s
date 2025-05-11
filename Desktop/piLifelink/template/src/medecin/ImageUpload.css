@@ -1,0 +1,123 @@
+.upload-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background-image: url('../../public/images/f.jpg'); /* Chemin vers ton image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Optionnel : ajouter un overlay pour assombrir légèrement le fond */
+.upload-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* assombrit le fond */
+  z-index: 0;
+}
+
+.upload-card {
+  background: rgba(255, 255, 255, 0.95); /* légèrement transparent pour voir un peu le fond */
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 500px;
+  z-index: 1; /* au-dessus de l'overlay */
+  position: relative;
+}
+
+h2 {
+  text-align: center;
+  color: #1d3557;
+  margin-bottom: 20px;
+}
+
+/* Bouton retour */
+.back-button {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+/* Formulaire */
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-text,
+.input-file {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  transition: border-color 0.3s ease;
+}
+
+.input-text:focus,
+.input-file:focus {
+  border-color: #457b9d;
+  outline: none;
+}
+
+.btn-submit {
+  padding: 12px;
+  background: #457b9d;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-submit:hover {
+  background: #1d3557;
+}
+
+/* Aperçu image */
+.preview {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.preview img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 12px;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Étapes */
+.steps {
+  margin-top: 20px;
+  background: #edf6f9;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.steps ul {
+  padding-left: 20px;
+}
+
+.steps li {
+  margin-bottom: 5px;
+}

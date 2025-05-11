@@ -1,0 +1,149 @@
+.complaint-page {
+    background-color: #f1f5f9;
+    padding: 100px 20px 80px;
+    min-height: 100vh;
+  }
+  
+  .complaint-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .complaint-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .complaint-header h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0d6efd;
+  }
+  
+  .complaint-header p {
+    color: #666;
+  }
+  
+  .success-message,
+  .error-message {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  .success-message {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .error-message {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+  
+  .complaint-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .complaint-form label {
+    font-weight: 600;
+  }
+  
+  .complaint-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    resize: vertical;
+  }
+  
+  .complaint-form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(to right, #0d6efd, #3b82f6);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .complaint-form button:disabled {
+    background: #93c5fd;
+    cursor: not-allowed;
+  }
+  
+  .send-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+
+  /* CSS pour l'animation flash */
+.success-message {
+  background-color: #28a745; /* Vert pour le succès */
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+  animation: flash 1s ease-in-out; /* Animation flash */
+}
+
+/* Animation pour le flash */
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* Style général pour le bouton classique */
+/* Style général pour le bouton "Back to Patient" */
+/* Style pour le bouton "Back to Patient" */
+.back-to-patient-button {
+  background-color: #66b3ff; /* Bleu clair par défaut */
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.back-to-patient-button:hover {
+  background-color: #3399ff; /* Bleu plus foncé lors du survol */
+}
+
+.back-to-patient-button:focus {
+  outline: none;
+}
+
+.back-to-patient-button:disabled {
+  background-color: #d6d6d6;
+  cursor: not-allowed;
+}
+
+
+
+  

@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.login-page {
+  font-family: 'Outfit', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.background-slideshow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.background-slideshow img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: slideshow 24s infinite;
+}
+
+.background-slideshow img:nth-child(1) { animation-delay: 0s; }
+.background-slideshow img:nth-child(2) { animation-delay: 8s; }
+.background-slideshow img:nth-child(3) { animation-delay: 16s; }
+
+@keyframes slideshow {
+  0% { opacity: 0; }
+  8% { opacity: 1; }
+  25% { opacity: 1; }
+  33% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.wrapper {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(25px);
+  padding: 40px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  width: 400px;
+  color: #fff;
+  animation: fadeIn 1s ease-in-out;
+  z-index: 2;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.wrapper h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 14px 45px 14px 16px;
+  font-size: 16px;
+  color: #fff;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.input-box input:focus {
+  border-color: #00eaff;
+  box-shadow: 0 0 15px #00eaff;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.input-box .icon {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  color: rgba(30, 93, 170, 0.6);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 50px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(to right, #00f2fe, #4facfe);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+}
+
+.login-btn:hover {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  transform: scale(1.03);
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.remember-forgot a {
+  color: #00eaff;
+  text-decoration: none;
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  color: #ccc;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #ccc;
+  margin: 0 10px;
+}
+
+.google-login {
+  display: flex;
+  justify-content: center;
+}
+
+.google-login button {
+  width: 100%;
+  border-radius: 50px !important;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.register-link a {
+  color: #00eaff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}

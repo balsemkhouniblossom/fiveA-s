@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Install dependencies') {
+            steps {
+                script {
+                    // Change directory to 'server' before running npm commands
+                    sh 'cd server && npm install'
+                }
+            }
+        }
+        stage('Unit Test') {
+            steps {
+                script {
+            sh 'cd server && npx jest'
+                }
+            }
+        }
+        stage('Build application') {
+            steps {
+                script {
+                    sh 'cd server && npm run build-dev'
+                }
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    def scannerHome = tool 'scanner'
+                    withSonarQubeEnv {
+                        sh 'cd server && ${scannerHome}/bin/sonar-scanner'
+                    }
+                }
+            }
+        }
+    }
+}

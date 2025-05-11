@@ -1,0 +1,117 @@
+.update-profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+}
+
+.form-wrapper {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+    transition: all 0.3s ease;
+}
+
+.form-wrapper:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.input-field {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-field input,
+.input-field select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.input-field input:focus,
+.input-field select:focus {
+    border-color: #007BFF;
+    background-color: #e6f7ff;
+}
+
+.select-icon {
+    position: absolute;
+    right: 15px;
+    top: 14px;
+    color: #007BFF;
+    font-size: 18px;
+}
+
+.error {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+button.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.submit-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.message {
+    color: green;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    transition: opacity 0.5s ease;
+}
+
+.message.error {
+    color: red;
+}
+
+/* Style for the back button */
+button.back-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #ccc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button.back-btn:hover {
+    background-color: #888;
+    transform: scale(1.05);
+}
+

@@ -1,0 +1,58 @@
+/* Conteneur principal */
+.operation-calendar-container {
+    font-family: 'Outfit', sans-serif;
+    padding: 40px 20px;
+    background-color: #f7f9fc;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Titre */
+  .calendar-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  /* Bloc calendrier */
+  .calendar-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    padding: 20px;
+  }
+  
+  /* Personnalisation des boutons */
+  .rbc-btn-group button {
+    background-color: #eaf4fc;
+    color: #2c3e50;
+    font-weight: bold;
+    border-radius: 6px;
+    margin: 0 3px;
+    border: 1px solid #d6eaff;
+  }
+  
+  .rbc-btn-group button:hover {
+    background-color: #d0e7fb;
+  }
+  
+  /* Événements dans le calendrier */
+  .rbc-event {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 4px;
+    border-radius: 4px;
+  }
+  
+  /* Pour forcer l'affichage complet */
+  .rbc-calendar {
+    height: 100% !important;
+  }
+  

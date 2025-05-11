@@ -1,0 +1,249 @@
+/* Conteneur principal */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  text-align: center; /* Centre le titre */
+  position: relative; /* S'assurer que la position est relative pour éviter les superpositions */
+}
+
+/* Titre */
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Barre de recherche */
+.search-bar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px; /* Augmenter l'espacement sous la barre de recherche */
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: #f4f4f4;
+  color: #333;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search-bar:focus {
+  border-color: #007bff;
+  background-color: #fff;
+}
+
+.search-bar::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+/* Grille des utilisateurs */
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4 cartes par ligne */
+  gap: 20px;
+  justify-items: center;
+  padding: 10px;
+  position: relative; /* Assurer un positionnement normal pour éviter les superpositions */
+  z-index: 0; /* S'assurer que la grille est derrière les autres éléments */
+}
+
+/* Carte utilisateur */
+.user-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border: 1px solid #ddd;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  width: 100%;
+  max-width: 250px; 
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+}
+
+.user-card h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.user-info {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+/* Sélection du rôle */
+.role-select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Bouton de suppression */
+.delete-button {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto 0;
+  width: 40px;
+  height: 40px;
+}
+
+.delete-button:hover {
+  background-color: #e60000;
+  transform: scale(1.1);
+}
+
+.delete-button:active {
+  transform: scale(0.95);
+}
+
+/* Icône du bouton */
+.material-icons {
+  font-size: 24px;
+  color: white;
+}
+
+
+.container {
+  max-width: 900px; /* Adjusted for a more compact fit */
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center; /* Center the title */
+}
+
+.material-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.material-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.submit-button {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 15px;
+}
+
+.submit-button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.material-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Space between cards */
+  justify-content: center; /* Center align cards */
+}
+
+.small-material-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px; /* Increased padding for better fit */
+  border: 1px solid #ddd;
+  text-align: center;
+  width: 200px; /* Adjusted width for better fit */
+  transition: transform 0.2s ease-in-out;
+}
+
+.small-material-card:hover {
+  transform: translateY(-5px);
+}
+
+.small-material-card h3 {
+  font-size: 16px; /* Slightly increased font size */
+  font-weight: bold;
+  margin-bottom: 5px; /* Reduced margin */
+}
+
+.material-info {
+  font-size: 14px; /* Increased font size for better visibility */
+  color: #666;
+  margin: 5px 0;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between; /* Ensure buttons are on opposite sides */
+  margin-top: 10px;
+}
+
+.card-actions button {
+  flex: 1; /* Allow buttons to occupy equal space */
+  margin: 0 5px; /* Add margin between buttons */
+}
+
+.delete-button {
+  background-color: #ff4d4d; 
+  border: none;
+  color: white;
+  padding: 5px;
+  font-size: 12px; /* Adjusted font size */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.delete-button:hover {
+  background-color: #e60000; 
+  transform: scale(1.1); 
+}
+
+.delete-button:active {
+  transform: scale(0.95); /* Shrink when clicked for feedback */
+}
+.filter-container {
+  margin-right: 20px;
+}
+
+.filter-container label {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.filter-select {
+  padding: 9px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 12px;
+}

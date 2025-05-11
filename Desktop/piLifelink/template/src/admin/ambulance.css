@@ -1,0 +1,114 @@
+/* Global container for the list */
+.ambulance-container {
+  margin: 20px;
+}
+
+/* Heading styling */
+.ambulance-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #4a90e2;
+  margin-bottom: 20px;
+}
+
+/* Centering loading and error messages */
+.text-center {
+  text-align: center;
+}
+
+/* Styling for individual ambulance cards */
+.ambulance-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.ambulance-card:hover {
+  transform: scale(1.05);
+}
+
+.ambulance-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid #f2f2f2;
+}
+
+.ambulance-info {
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.ambulance-info h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.ambulance-info p {
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+/* Styling for the select dropdown in role-selection */
+.role-selection {
+  margin-top: 15px;
+}
+
+.role-selection label {
+  font-size: 1rem;
+  color: #333;
+  margin-right: 10px;
+}
+
+.role-select {
+  padding: 6px 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+.role-select:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.ambulance-actions {
+  padding: 10px;
+  background-color: #f4f4f4;
+  text-align: center;
+  border-top: 2px solid #f2f2f2;
+}
+
+.delete-button {
+  background-color: #ff4f5a;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #ff2a36;
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+
+/* Loading and error message */
+.error-message {
+  color: red;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}

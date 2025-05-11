@@ -1,0 +1,138 @@
+:root {
+  --primary-color: #2e8bff;
+  --hover-color: #1a73e8;
+  --background-color: #f9f9f9;
+  --form-bg: #ffffff;
+  --border-color: #e0e0e0;
+  --text-color: #222;
+  --error-color: #d8000c;
+  --error-bg: #ffe5e5;
+  --success-color: #006400;
+  --success-bg: #d0f0c0;
+  --border-radius: 10px;
+  --padding: 14px;
+  --font-size: 16px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.create-ambulance-container {
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: var(--form-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.create-ambulance-container:hover {
+  transform: translateY(-4px);
+}
+
+.create-ambulance-title {
+  color: var(--text-color);
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.create-ambulance-message {
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--border-radius);
+}
+
+.create-ambulance-message:empty {
+  display: none;
+}
+
+.create-ambulance-message.success {
+  color: var(--success-color);
+  background-color: var(--success-bg);
+  border: 1px solid #a3e4a3;
+}
+
+.create-ambulance-message.error {
+  color: var(--error-color);
+  background-color: var(--error-bg);
+  border: 1px solid #f5c6cb;
+}
+
+.create-ambulance-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.create-ambulance-input-box {
+  position: relative;
+}
+
+.create-ambulance-input-box input,
+.create-ambulance-input-box select {
+  width: 100%;
+  padding: var(--padding);
+  padding-left: 44px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size);
+  background-color: #fdfdfd;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.create-ambulance-input-box input:focus,
+.create-ambulance-input-box select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(46, 139, 255, 0.2);
+  outline: none;
+}
+
+.create-ambulance-icon {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 18px;
+}
+
+.create-ambulance-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: var(--border-radius);
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+.create-ambulance-button:hover {
+  background-color: var(--hover-color);
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .create-ambulance-container {
+    margin: 30px 15px;
+    padding: 20px;
+  }
+
+  .create-ambulance-title {
+    font-size: 22px;
+  }
+
+  .create-ambulance-button {
+    font-size: 16px;
+  }
+}

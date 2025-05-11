@@ -1,0 +1,124 @@
+/* Cache les éléments avec cette classe */
+.hide {
+  display: none;
+}
+
+/* Conteneur principal */
+.profile-container {
+  margin-top: 60px;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ecf0f3, #ffffff);
+  min-height: 100vh;
+}
+
+/* Titre */
+.section-title h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  letter-spacing: 1.5px;
+}
+
+/* Carte de profil */
+.profile-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px;
+  transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: scale(1.01);
+}
+
+/* Détails */
+.profile-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.profile-image img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #3498db;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.profile-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.profile-info h4 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.profile-info p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.profile-info strong {
+  color: #333;
+}
+
+/* Bouton de mise à jour */
+.btn-update {
+  background: linear-gradient(to right, #3498db, #2980b9);
+  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-update:hover {
+  background: linear-gradient(to right, #2980b9, #1c5980);
+  transform: scale(1.05);
+}
+
+/* Texte de chargement */
+.loading-text {
+  text-align: center;
+  font-size: 1.4rem;
+  color: #3498db;
+}
+
+/* Texte d’erreur */
+.no-profile {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #e74c3c;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-details {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-info {
+    align-items: center;
+  }
+}

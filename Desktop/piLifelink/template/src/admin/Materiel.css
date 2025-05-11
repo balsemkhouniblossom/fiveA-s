@@ -1,0 +1,126 @@
+.materiel-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+  
+  .materiel-section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .materiel-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f5f7fa;
+    border-radius: 10px;
+  }
+  
+  .materiel-input {
+    padding: 12px 14px;
+    font-size: 16px;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    transition: border 0.3s ease;
+  }
+  
+  .materiel-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .materiel-submit-button {
+    background: linear-gradient(to right, #007bff, #0056b3);
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .materiel-submit-button:hover {
+    background: linear-gradient(to right, #0056b3, #004494);
+  }
+  
+  .materiel-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+  }
+  
+  .materiel-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 270px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .materiel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  .materiel-card h4 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #222;
+  }
+  
+  .materiel-card p {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .materiel-card-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .materiel-delete-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+  
+  .materiel-delete-button:hover {
+    background-color: #c0392b;
+  }
+  
+  .materiel-edit-button {
+    background-color: #17a2b8;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+  
+  .materiel-edit-button:hover {
+    background-color: #138496;
+  }
+  

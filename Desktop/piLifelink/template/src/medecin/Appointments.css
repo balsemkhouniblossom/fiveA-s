@@ -1,0 +1,73 @@
+/* Conteneur principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Titre */
+  .text-center {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #2c3e50;
+  }
+  
+  /* Grille des rendez-vous */
+  .appointment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  /* Carte de rendez-vous */
+  .appointment-card {
+    background-color: #f9f9f9;
+    border-left: 5px solid #3498db;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .appointment-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* Infos de rendez-vous */
+  .appointment-info {
+    margin: 0.5rem 0;
+    color: #555;
+  }
+  
+  /* Zone de sélection de statut */
+  .status-selection {
+    margin-top: 1rem;
+  }
+  
+  .status-selection label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+  }
+  
+  .status-select {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background-color: white;
+    transition: border 0.3s ease;
+  }
+  
+  .status-select:focus {
+    border-color: #3498db;
+    outline: none;
+  }
+  
+  /* Texte gris */
+  .text-gray-500 {
+    color: #888;
+  }
+  
